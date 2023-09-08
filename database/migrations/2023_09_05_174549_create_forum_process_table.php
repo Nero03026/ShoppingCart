@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('target')->nullable();;
             $table->integer('forum_id');
-            $table->foreign('target')->references('id')->on('forum_process')->onDelete();
+            $table->foreign('target')->references('id')->on('forum_process')->cascadeOnDelete();
         });
 
     }
