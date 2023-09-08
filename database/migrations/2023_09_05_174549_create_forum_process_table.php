@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('forum_process', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('target')->nullable();;
+            $table->unsignedBigInteger('target')->nullable();
+            $table->integer('user_id')->default('0')->nullable();
             $table->integer('forum_id');
-            $table->foreign('target')->references('id')->on('forum_process')->cascadeOnDelete();
+            $table->foreign('target')->references('id')->on('forum_process')->onDelete('cascade');
         });
-
     }
 
     /**
