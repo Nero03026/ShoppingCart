@@ -13,7 +13,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        $forumProcess = ForumProcess::with('children')->whereNull('target')->get() ?? [];
+        $forumProcess = ForumProcess::with('children', 'content')->whereNull('target')->get() ?? [];
 
         // $forumProcessData = $this->getCategoryData($forumProcess);
         return view('Forum.index', compact('forumProcess'));
@@ -65,7 +65,14 @@ class ForumController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $forumProcess = ForumProcess::find($id);
+        $forum = Forum::find($forumProcess->forum_id);
+        $forum->update([
+            'content' => $request->content,
+        ]);
+        return redirect(route('forum.index'));
+
     }
 
     /**
@@ -73,7 +80,20 @@ class ForumController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->delCategoryData($id);
+        return redirect(route('forum.index'));
+    }
+
+    private function delCategoryData($item)
+    {
+        // 獲取主表記錄
+        $post = ForumProcess::findOrFail($item);
+
+        // 遞迴刪除相關聯的 comments 記錄
+        foreach ($post->children as $children) {
+            $this->delCategoryData($children->id);
+        }
+        $post->delete();
     }
 
     public function getCategoryData($item)

@@ -5,11 +5,22 @@
     @foreach ($forumProcess as $item)
     <ul class=" mb-5">
         <li class="w-[100%] flex justify-between">
-            <div class="flex flex-col justify-center py-1 px-3">
-                {{ $item->forum->content }}
+            <div class="flex flex-col justify-center py-1 px-3 me-auto">
+                {{ $item->content->content}}
             </div>
-            <a class="min-w-[60px] py-1 px-3 border-2 border-solid rounded-lg text-rose-50 bg-rose-600"
-                href="{{ route('forum.destroy', $item->id) }}">删除</a>
+            <form class="flex item-center" action="{{route('forum.update', $item->id)}}" method="POST">
+                @csrf
+                @method('PUT')
+                <input type="text" name="content">
+                <button
+                    class="min-w-[60px] py-1 px-3 border-2 border-solid rounded-lg text-rose-50 bg-rose-600">編輯</button>
+            </form>
+            <form class="flex item-center" action="{{ route('forum.destroy', $item->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button
+                    class="min-w-[60px] py-1 px-3 border-2 border-solid rounded-lg text-rose-50 bg-rose-600">删除</button>
+            </form>
         </li>
         <li class="mb-3">
             <form action="{{ route('forum.store') }}" method="POST">

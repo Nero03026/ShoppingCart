@@ -28,23 +28,14 @@ class ForumProcess extends Model
     /**
      * Get the phone associated with the user.
      */
-    public function forum(): HasOne
-    {
-        return $this->hasOne(Forum::class, 'id', 'forum_id');
-    }
-
-    // public function forumtarget(): HasOne
-    // {
-    //     return $this->hasOne(ForumProcess::class, 'id', 'target');
-    // }
-
-    public function parent()
-    {
-        return $this->belongsTo(ForumProcess::class, 'target');
-    }
 
     public function children()
     {
         return $this->hasMany(ForumProcess::class, 'target');
+    }
+    public function content()
+    {
+        // return $this->hasMany(Forum::class, 'forum_id');
+        return $this->hasOne(Forum::class, 'id', 'forum_id');
     }
 }
