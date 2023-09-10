@@ -1,4 +1,4 @@
-@extends('layout.template-fontend')
+@extends('template.template-fontend')
 
 @section('main')
 <div class="max-w-[768px] w-[100%] m-auto">

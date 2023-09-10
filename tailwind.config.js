@@ -13,6 +13,7 @@ export default {
     ],
 
     theme: {
+        // --tw-ring-color
         extend: {
             colors: {
                 // 元件樣式

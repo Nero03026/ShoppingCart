@@ -72,7 +72,6 @@ class ForumController extends Controller
             'content' => $request->content,
         ]);
         return redirect(route('forum.index'));
-
     }
 
     /**
@@ -93,6 +92,7 @@ class ForumController extends Controller
         foreach ($post->children as $children) {
             $this->delCategoryData($children->id);
         }
+        $post->content->delete();
         $post->delete();
     }
 
