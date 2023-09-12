@@ -37,12 +37,12 @@ export default {
                 'Gary-800': '#21313c',
                 'Gary-900': '#001e2b',
 
-                // 背景顏色
-                'Bg-Primary': '#ceefce',
-                'Bg-Success': '#d1e7dd',
-                'Bg-Danger': '#f8d6d6',
-                'Bg-Warning': '#fff3cd',
-                'Bg-Info': '#cce1fe',
+                // 淺色系
+                'Light-Primary': '#ceefce',
+                'Light-Success': '#d1e7dd',
+                'Light-Danger': '#f8d6d6',
+                'Light-Warning': '#fff3cd',
+                'Light-Info': '#cce1fe',
 
                 // 字體顏色
                 'Text-Primary': '#044504',

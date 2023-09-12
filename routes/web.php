@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BackEndController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -48,4 +49,8 @@ Route::resource('/products', ProductController::class);
 Route::resource('/forum', ForumController::class);
 // 會員系統
 
+
+
+// 後臺管理畫面
+Route::get('/dashboard', [BackEndController::class, 'index']);
 require __DIR__ . '/auth.php';
