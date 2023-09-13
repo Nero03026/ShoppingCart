@@ -8,9 +8,8 @@
             <div class="flex flex-col gap-[16px]">
                 <label class="flex flex-col" for="paymothod1">
                     <div class="flex flex-row items-start gap-[8px]">
-                        <input id="paymothod1" name="paymothod" value=""
-                            class="mt-[5px] text-[theme(colors.Theme-Primart)] checked:outline-none checked:outline-[theme(colors.Theme-Primart)] focus:shadow-none"
-                            type="radio">
+                        <input id="paymothod1" name="pay_mothod" value="1" type="radio" checked
+                            class="mt-[5px] text-[theme(colors.Theme-Primart)] checked:outline-none checked:outline-[theme(colors.Theme-Primart)] focus:shadow-none">
                         <div class="flex flex-col">
                             <span class="text-[14px] font-bold">Payment with Paypal</span>
                             <span class="text-[14px]">You will be redirected to PayPal website to complete your purchase
@@ -20,9 +19,8 @@
                 </label>
                 <label class="flex flex-col" for="paymothod2">
                     <div class="flex flex-row items-start gap-[8px]">
-                        <input id="paymothod2" name="paymothod" value=""
-                            class="mt-[5px] text-[theme(colors.Theme-Primart)] checked:outline-none checked:outline-[theme(colors.Theme-Primart)] focus:shadow-none"
-                            type="radio">
+                        <input id="paymothod2" name="pay_mothod" value="2" type="radio"
+                            class="mt-[5px] text-[theme(colors.Theme-Primart)] checked:outline-none checked:outline-[theme(colors.Theme-Primart)] focus:shadow-none">
                         <div class="flex flex-col">
                             <span class="text-[14px] font-bold">Credit / Debit Card</span>
                             <span class="text-[14px]">Safe money transfer using your bank accou k account. We support
@@ -33,9 +31,8 @@
                 </label>
                 <label class="flex flex-col" for="paymothod3">
                     <div class="flex flex-row items-start gap-[8px]">
-                        <input id="paymothod3" name="paymothod" value=""
-                            class="mt-[5px] text-[theme(colors.Theme-Primart)] checked:outline-none checked:outline-[theme(colors.Theme-Primart)] focus:shadow-none"
-                            type="radio">
+                        <input id="paymothod3" name="pay_mothod" value="3" type="radio"
+                            class="mt-[5px] text-[theme(colors.Theme-Primart)] checked:outline-none checked:outline-[theme(colors.Theme-Primart)] focus:shadow-none">
                         <div class="flex flex-col">
                             <span class="text-[14px] font-bold">Pay with Payoneer</span>
                             <span class="text-[14px]">You will be redirected to Payoneer website to complete your
@@ -46,9 +43,8 @@
                 </label>
                 <label class="flex flex-col" for="paymothod4">
                     <div class="flex flex-row items-start gap-[8px]">
-                        <input id="paymothod4" name="paymothod" value=""
-                            class="mt-[5px] text-[theme(colors.Theme-Primart)] checked:outline-none checked:outline-[theme(colors.Theme-Primart)] focus:shadow-none"
-                            type="radio">
+                        <input id="paymothod4" name="pay_mothod" value="4" type="radio"
+                            class="mt-[5px] text-[theme(colors.Theme-Primart)] checked:outline-none checked:outline-[theme(colors.Theme-Primart)] focus:shadow-none">
                         <div class="flex flex-col">
                             <span class="text-[14px] font-bold">Cash on Delivery</span>
                             <span class="text-[14px]">Pay with cash when your order is delivered.</span>

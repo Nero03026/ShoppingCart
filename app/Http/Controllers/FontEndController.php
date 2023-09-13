@@ -18,7 +18,7 @@ class FontEndController extends Controller
             Cart::create([
                 'products_id' => $request->product,
                 'user_id' => $user_id,
-                'qty' => 0,
+                'qty' => 1,
             ]);
         }
         return redirect(route('index'));

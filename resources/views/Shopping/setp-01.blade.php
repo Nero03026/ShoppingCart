@@ -6,7 +6,11 @@
         @csrf
         <div class="w-[60%] flex flex-col">
             @foreach ($carts as $cart)
-            <div class="w-[100%] flex flex-row">
+            <div class="w-[100%] flex flex-row items-center">
+                <div class="flex flex-col">
+                    <input type="checkbox" name="products_active[]" value="{{$cart->id}}" @if ($cart->products_active) checked
+                    @endif>
+                </div>
                 <div class="w-[50px] h-[50px]">
                     <img src="{{asset($cart->product->product_image)}}" alt="">
                 </div>
@@ -66,7 +70,7 @@
                     <input class="w-[100%] flex justify-between py-[10px] px-[20px] rounded-lg border-2" type="text"
                         placeholder="Promo or Gift Card">
                     <button class="w-[100%] flex justify-center py-[10px] px-[20px] rounded-lg border-2"
-                        type="submit">Redeem</button>
+                        type="button">Redeem</button>
                 </div>
                 <div class="text-[12px] text-[theme(colors.Gary-700)]">Terms & Conditions apply</div>
             </div>
