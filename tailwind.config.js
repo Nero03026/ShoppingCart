@@ -45,11 +45,11 @@ export default {
                 'Light-Info': '#cce1fe',
 
                 // 字體顏色
-                'Text-Primary': '#044504',
-                'Text-Success': '#0a3622',
-                'Text-Danger': '#581313',
-                'Text-Warning': '#664d03',
-                'Text-Info': '#002b63',
+                'Dark-Primary': '#044504',
+                'Dark-Success': '#0a3622',
+                'Dark-Danger': '#581313',
+                'Dark-Warning': '#664d03',
+                'Dark-Info': '#002b63',
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],

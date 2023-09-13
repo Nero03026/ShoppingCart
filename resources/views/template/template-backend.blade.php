@@ -112,6 +112,8 @@
             @yield('main')
         </section>
     </div>
+    
+    <script src="{{asset('js/cdn.jsdelivr.net_npm_sweetalert2@11')}}"></script>
     @yield('js')
 </body>
 
