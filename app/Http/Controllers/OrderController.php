@@ -120,12 +120,15 @@ class OrderController extends Controller
 
         // 轉移購物車勾選商品至訂單內
         foreach (session()->get('products_active') as $item) {
-            $cart = Cart::find($item);
-
+            $cart = Cart::with('product')->find($item);
             OrderProduct::create([
                 'order_id'  => $orderDeatail->id,
                 'product_id'  => $cart->products_id,
                 'product_qty'  => $cart->qty,
+                'product_name'  => $cart->product->product_name,
+                'product_category'  => $cart->product->product_category,
+                'product_image'  => $cart->product->product_image,
+                'product_sale'  => $cart->product->price_sale,
             ]);
 
             $cart->delete();

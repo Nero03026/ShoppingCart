@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\OrderDeatail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,5 +23,32 @@ class FontEndController extends Controller
             ]);
         }
         return redirect(route('index'));
+    }
+
+    public function AccountIndex()
+    {
+        return view('account.index');
+    }
+    public function AccountOrder()
+    {
+        $user = Auth::user();
+        $OrderDeatail = OrderDeatail::with('product')->where('user_id', $user->id)->get();
+        return view('account.order', compact('OrderDeatail'));
+    }
+    public function AccountSetting()
+    {
+        return view('account.setting');
+    }
+    public function AccountAddress()
+    {
+        return view('account.address');
+    }
+    public function AccountPaymentMethod()
+    {
+        return view('account.paymethod');
+    }
+    public function AccountNotification()
+    {
+        return view('account.notification');
     }
 }

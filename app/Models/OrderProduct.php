@@ -24,6 +24,8 @@ class OrderProduct extends Model
      */
     protected $fillable = [
         'id', 'order_id', 'product_id', 'product_qty',
+        'product_name', 'product_category', 'product_image',
+        'product_sale'
     ];
 
     public function deatail()

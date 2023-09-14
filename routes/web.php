@@ -45,11 +45,20 @@ Route::resource('/products', ProductController::class);
 Route::resource('/forum', ForumController::class);
 
 // 會員系統
-
+Route::middleware('auth')->prefix('account')->group(function () {
+    Route::get('/', [FontEndController::class, 'AccountIndex'])->name('account.index');
+    Route::get('/order', [FontEndController::class, 'AccountOrder'])->name('account.order');
+    Route::get('/setting', [FontEndController::class, 'AccountSetting'])->name('account.setting');
+    Route::get('/address', [FontEndController::class, 'AccountAddress'])->name('account.address');
+    Route::get('/paymethod', [FontEndController::class, 'AccountPaymentMethod'])->name('account.pay');
+    Route::get('/notification', [FontEndController::class, 'AccountNotification'])->name('account.notification');
+});
 
 
 // 後臺管理畫面
-Route::get('/dashboard', [BackEndController::class, 'index']);
+Route::middleware(['auth', 'auth.role:1'])->prefix('board')->group(function () {
+    Route::get('/', [BackEndController::class, 'index']);
+});
 
 // 購物車
 Route::middleware('auth')->post('/shoppingcart', [FontEndController::class, 'cart'])->name('cart.add');

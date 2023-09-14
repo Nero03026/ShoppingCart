@@ -17,6 +17,10 @@ return new class extends Migration
             $table->integer('order_id')->nullable()->default(NULL);
             $table->integer('product_id')->nullable()->default(NULL);
             $table->integer('product_qty')->nullable()->default(NULL);
+            $table->string('product_name')->nullable()->default(NULL);
+            $table->string('product_category')->nullable()->default(NULL);
+            $table->string('product_image')->nullable()->default(NULL);
+            $table->integer('product_sale')->nullable()->default(0);
         });
     }
 
