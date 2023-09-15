@@ -17,7 +17,7 @@ class OrderController extends Controller
     {
         $user_id = Auth::id();
         $carts = Cart::with('product')->where('user_id', $user_id)->get();
-        return view('Shopping.setp-01', compact('carts'));
+        return view('shopping.setp-01', compact('carts'));
     }
     public function store01(Request $request)
     {
@@ -39,7 +39,7 @@ class OrderController extends Controller
     }
     public function step02()
     {
-        return view('Shopping.setp-02');
+        return view('shopping.setp-02');
     }
     public function store02(Request $request)
     {
@@ -80,7 +80,7 @@ class OrderController extends Controller
     }
     public function step03()
     {
-        return view('Shopping.setp-03');
+        return view('shopping.setp-03');
     }
     public function store03(Request $request)
     {
@@ -144,6 +144,6 @@ class OrderController extends Controller
     }
     public function step04()
     {
-        return view('Shopping.setp-04');
+        return view('shopping.setp-04');
     }
 }

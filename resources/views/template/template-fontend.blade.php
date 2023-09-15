@@ -31,10 +31,14 @@
                     </label>
                 </form>
                 <div class="flex items-center gap-[16px] ">
-                    <a href="" class="flex items-center"><i class="fa-regular fa-heart text-[20px]"></i></a>
-                    <a href="" class="flex items-center"><i class="fa-regular fa-user text-[20px]"></i></a>
-                    <a href="{{route('order.step01')}}" class="flex items-center"><i
-                            class="fa-regular fa-cart-shopping text-[20px]"></i></a>
+                    <a href="" class="flex items-center"><i
+                            class="fa-regular fa-heart text-[20px]"></i></a>
+                    <a href="" class="flex items-center"><i
+                            class="fa-regular fa-user text-[20px]"></i></a>
+                    <a href="{{route('order.step01')}}" class="flex items-center">
+                        <i
+                            class="fa-regular fa-cart-shopping text-[20px]"></i>
+                    </a>
                 </div>
             </div>
             <div class="w-[100%] max-w-7xl mx-auto px-5">
