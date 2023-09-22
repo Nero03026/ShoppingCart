@@ -1,9 +1,5 @@
 @extends('template.template-fontend')
-@extends('template.template-fontend')
-@extends('template.template-fontend')
-@extends('template.template-fontend')
-@extends('template.template-fontend')
-@extends('template.template-fontend')
+
 @section('main')
 <div class="w-[100%] max-w-7xl mx-auto px-5 py-5 flex flex-row">
     分夜闌
@@ -66,8 +62,9 @@
                         </td>
                         <td class="py-3 text-center">
                             <div class="flex flex-col justify-center items-center">
-                                <span class="text-[theme(colors.Theme-Danger)]">$20.00</span>
-                                <span class="">${{$cart->product->price_sale}}</span>
+                                {{-- <span class="text-[theme(colors.Theme-Danger)]">$20.00</span> --}}
+                                <span class=""
+                                    data-price_sale="{{$cart->product->price_sale}}">${{$cart->product->price_sale}}</span>
                             </div>
                         </td>
                     </tr>
@@ -81,15 +78,15 @@
                 <div class="flex flex-col border-2 rounded-lg mb-[20px]">
                     <div class="flex justify-between px-[20px] py-[15px] border-b-2">
                         <span>Item Subtotal</span>
-                        <span>$70.00</span>
+                        <span id="ItemSubtotal">$70.00</span>
                     </div>
                     <div class="flex justify-between px-[20px] py-[15px] border-b-2">
-                        <span>Service Fee</span>
-                        <span>$3.00</span>
+                        <span>Service Free</span>
+                        <span id="ServiceFree" data-servicefree="3">$3.00</span>
                     </div>
                     <div class="flex justify-between px-[20px] py-[15px]">
                         <span class="">Subtotal</span>
-                        <span class="">$67.00</span>
+                        <span id="Subtotal">$67.00</span>
                     </div>
                 </div>
                 <div class="mb-[10px]">
@@ -97,7 +94,7 @@
                         class="w-[100%] flex justify-between py-[10px] px-[20px] rounded-lg bg-[theme(colors.Theme-Primart)] text-[theme(colors.Theme-Light)]"
                         type="submit">
                         <span>Go to Checkout</span>
-                        <span>$67.00</span>
+                        <span id="FinalSubtotal">$67.00</span>
                     </button>
                 </div>
                 <div>
@@ -135,22 +132,43 @@
             if(element.dataset.operation == '+'){
                 element.parentElement.children[1].value++;
             }
+            product_price(element);
+            product_total()
         });
     });
 
-    // 待修改
-    // const inputoperation = document.querySelectorAll('[data-inputoperation]');
-    // inputoperation.forEach(element=>{
-    //     console.log(element);
-    //     element.addEventListener('change',()=>{
-    //         if(parseFloat(element.value).toString() == "NaN"){
-    //             Swal.fire(
-    //                 'Good job!',
-    //                 'You clicked the button!',
-    //                 'success'
-    //             )
-    //         }
-    //     });
-    // });
+    const inputoperation = document.querySelectorAll('[data-inputoperation]');
+    inputoperation.forEach(element=>{
+        product_price(element);
+
+        element.addEventListener("input",()=>{
+            product_price(element);
+            product_total();
+        });
+    });
+    product_total();
+
+    // 修改產品金額
+    function product_price(item){
+        // 數量
+        const tot = item.parentElement.children[1].value;
+        // 價格
+        const price_sale = item.parentElement.parentElement.parentElement.children[4].children[0].children[0].dataset.price_sale;
+
+        item.parentElement.parentElement.parentElement.children[4].children[0].children[0].innerHTML = tot * price_sale;
+    }
+
+    // 修改總金額數量
+    function product_total(){
+        const price_sale = document.querySelectorAll('[data-price_sale]');
+        let total = 0;
+        price_sale.forEach(element => {
+            total += parseInt(element.innerHTML);
+        });
+        const servicefree = document.querySelector('#ServiceFree');
+        document.querySelector('#ItemSubtotal').innerHTML = `$${total}.00`;
+        document.querySelector('#Subtotal').innerHTML = `$${parseInt(servicefree.dataset.servicefree) + total}.00`;
+        document.querySelector('#FinalSubtotal').innerHTML =`$${parseInt(servicefree.dataset.servicefree) + total}.00`;
+    }
 </script>
 @endsection

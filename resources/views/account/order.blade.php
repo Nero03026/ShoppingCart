@@ -16,7 +16,6 @@
                         <th class="p-2 border border-slate-600">Status</th>
                         <th class="p-2 border border-slate-600">Date</th>
                         <th class="p-2 border border-slate-600">Items</th>
-                        <th class="p-2 border border-slate-600">Amount</th>
                         <th class="p-2 border border-slate-600"></th>
                     </tr>
                 </thead>
@@ -46,11 +45,6 @@
                         <td class="p-2 border border-slate-700">
                             <div class="text-center">
                                 <span>{{$item->product->count()}}</span>
-                            </div>
-                        </td>
-                        <td class="p-2 border border-slate-700">
-                            <div class="text-center">
-                                <span>${{$item->product->sum('product_sale')}}</span>
                             </div>
                         </td>
                         <td class="p-2 border border-slate-700">

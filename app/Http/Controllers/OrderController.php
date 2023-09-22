@@ -84,6 +84,7 @@ class OrderController extends Controller
     }
     public function store03(Request $request)
     {
+        // 驗證資料
         $validator = Validator::make(
             $request->all(),
             ['pay_mothod' => 'required'],
@@ -96,6 +97,7 @@ class OrderController extends Controller
                 ->withInput();
         }
 
+        // 訂單名稱規則
         $noworder = OrderDeatail::whereDate('created_at', now())->count() + 1;
         $myRandStr = '' . join(range('a', 'z')) . '' . join(range('A', 'Z'));
         $order_name = 'QT' . date('Ymd') . str_pad($noworder, 3, '0', STR_PAD_LEFT) . substr(str_shuffle($myRandStr), 0, 3);
@@ -118,9 +120,11 @@ class OrderController extends Controller
             'pay_static' => 2,
         ]);
 
+        $total = 0;
         // 轉移購物車勾選商品至訂單內
         foreach (session()->get('products_active') as $item) {
             $cart = Cart::with('product')->find($item);
+            $total += $cart->qty * $cart->product->price_sale;
             OrderProduct::create([
                 'order_id'  => $orderDeatail->id,
                 'product_id'  => $cart->products_id,
@@ -133,6 +137,11 @@ class OrderController extends Controller
 
             $cart->delete();
         }
+
+        // 更新總金額
+        $orderDeatail->update([
+            'order_total' => $total,
+        ]);
 
         $request->session()->forget([
             'products_active', 'first_name', 'last_name',
