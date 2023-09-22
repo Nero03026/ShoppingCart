@@ -1,5 +1,9 @@
 @extends('template.template-fontend')
-
+@extends('template.template-fontend')
+@extends('template.template-fontend')
+@extends('template.template-fontend')
+@extends('template.template-fontend')
+@extends('template.template-fontend')
 @section('main')
 <div class="w-[100%] max-w-7xl mx-auto px-5 py-5 flex flex-row">
     分夜闌
